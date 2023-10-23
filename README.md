@@ -5,23 +5,23 @@ Echipa: 10
 
 ## Prezentare Generală
 
-Acest proiect își propune să creeze un joc de apărare cu turnuri în 2D, cu mecanici și caracteristici de joc unice. Jocul este conceput în jurul conceptului de apărare a orașului, unde jucătorii trebuie să construiască și să upgradeze strategic turnuri pentru a-și proteja orașul de valuri tot mai puternice de inamici.
+Acest proiect își propune să creeze un joc de apărare cu turnuri în 3D, cu mecanici și caracteristici dinamice. Jocul este proiectat în jurul conceptului de apărare a teritoriului, unde jucătorii trebuie să construiască, să upgradeze turnuri și să își gestioneze strategic resursele pentru a-și proteja orașul de valuri tot mai puternice de inamici.
 
 ## Progresul în Joc
 
 ### Orașe
 
-- Jocul se desfășoară pe o hartă 2D cu mai multe orașe, fiecare reprezentând un nivel diferit.
+- Jocul se desfășoară pe o hartă 3D cu mai multe orașe, fiecare reprezentând o grupare de nivele.
 - Jucătorii trebuie să termine un oraș pentru a debloca unul sau mai multe orașe noi.
 - Diverse orașe au diferite grade de dificultate:
   - Orașe mici (ideale pentru tutoriale și prezentarea de funcționalități)
   - Orașe medii (niveluri obișnuite)
-  - Orașe mari (orașe capitale, niveluri de tip șef)
+  - Orașe mari (orașe capitale, niveluri de tip boss-battle)
 
 ### Nivele
 
-- Fiecare oraș este compus din mai multe nivele, care funcționează ca economie de hărți.
-- Un nivel reprezintă un grup de etape/valuri și acționează ca un punct de control.
+- Fiecare oraș este compus din mai multe nivele (un mod de reutilizare a hărților).
+- Un nivel reprezintă un grup de etape/valuri și acționează ca un checkpoint la care jucătorul poate să revină.
 - Nivelul următor începe cu resursele și configurația din nivelul anterior.
 
 ## Progresul în Etape
@@ -37,12 +37,12 @@ Acest proiect își propune să creeze un joc de apărare cu turnuri în 2D, cu 
 - Inamicii devin din ce în ce mai numeroși și mai puternici pe parcursul jocului.
 - Inamicii au abilitatea de a:
   - Distrugere orice tip de clădire în oraș.
-  - Alege singuri traseul, schimbându-l dacă este blocat.
-  - Se adaptează în timp la dificultățile întâlnite.
+  - Alege singuri traseul, schimbându-l dacă este blocat (în funcție de inteligența inamicului).
+  - Se adaptează în timp la dificultățile întâlnite (ex. capătă rezistență la anumite turnuri).
 
-## Funcționalități Viitoare
+## Funcționalități în Dezvoltare
 
-Există funcționalități suplimentare care sunt încă în dezvoltare și încă nu sunt complet definite în povestea jocului:
+Există funcționalități care se vor defini pe măsură ce se lucrează la ele și încă nu sunt complet proiectate în povestea jocului:
 
 - Diverse tipuri de turnuri cu abilități unice.
 - Tipuri variate de resurse pentru joc.
