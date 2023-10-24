@@ -36,13 +36,13 @@ Acest proiect își propune să creeze un joc de apărare cu turnuri în 3D, cu 
 
 - Inamicii devin din ce în ce mai numeroși și mai puternici pe parcursul jocului.
 - Inamicii au abilitatea de a:
-  - Distrugere orice tip de clădire în oraș.
+  - Distruge orice tip de clădire în oraș.
   - Alege singuri traseul, schimbându-l dacă este blocat (în funcție de inteligența inamicului).
-  - Se adaptează în timp la dificultățile întâlnite (ex. capătă rezistență la anumite turnuri).
+  - Se adapta în timp la dificultățile întâlnite (ex. capătă rezistență la anumite turnuri).
 
 ## Funcționalități în Dezvoltare
 
-Există funcționalități care se vor defini pe măsură ce se lucrează la ele și încă nu sunt complet proiectate în povestea jocului:
+Există funcționalități care se vor defini pe măsură ce se lucrează la ele și încă nu sunt complet definite în descrierea jocului:
 
 - Diverse tipuri de turnuri cu abilități unice.
 - Tipuri variate de resurse pentru joc.
