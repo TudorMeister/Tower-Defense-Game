@@ -375,6 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4e1911a1e3f5444bc90bb5e0fb95c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelButtonItemPrefab: {fileID: 7667021488167037194, guid: 297b841547a278d439df1ce82cf49865,
+    type: 3}
+  ContentContainer: {fileID: 1323312942}
 --- !u!1 &523263084
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +520,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text
@@ -621,6 +629,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text
@@ -907,6 +920,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text
@@ -1420,6 +1438,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text
@@ -1525,6 +1548,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text
@@ -1780,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd56acddf15b046468ca65492a78d282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelPopUpSection: {fileID: 351743538}
+  LevelPopUpSection: {fileID: 351743540}
 --- !u!1 &2145859469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,6 +1936,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
         type: 3}
+    - target: {fileID: 1910453894236478221, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: MapLevelSelectPanel
+      value: 
+      objectReference: {fileID: 2036543594}
     - target: {fileID: 3678022556189723084, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_text

@@ -1,76 +1,76 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CitySelectButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject panelHolder;
-    public GameObject detailsPanePrefab;
+    public LevelSelectMapGenerator MapLevelSelectPanel;
+    public GameObject DetailsPanelPrefab;
+
 
     public TextMeshProUGUI CityName;
     public TextMeshProUGUI LevelDetails;
 
-    private GameObject _detailsPane;
-    private RectTransform _detailsPaneRectTransform;
+    public CityDetailsPanelScript GetDetailsPanel(){
+        if (_detailsPanelInstance == null) {
+            _detailsPanelInstance = Instantiate(DetailsPanelPrefab, MapLevelSelectPanel.transform).GetComponent<CityDetailsPanelScript>();
+            _detailsPanelInstance.name = "CityDetailsPane (" + CityName.text + ")";
+            _detailsPanelInstance.transform.SetAsLastSibling();
 
-    public GameObject GetDetailsPane(){
-        if (_detailsPane == null) {
-            _detailsPane = Instantiate(detailsPanePrefab, panelHolder.transform);
-            _detailsPane.name = "CityDetailsPane (" + CityName.text + ")";
-            _detailsPane.transform.SetAsLastSibling();
-            _detailsPaneRectTransform = _detailsPane.GetComponent<RectTransform>();
+            _detailsPanelRectTransform = _detailsPanelInstance.GetComponent<RectTransform>();
 
         }
 
-        return _detailsPane;
+        return _detailsPanelInstance;
     }
 
     public void OnClick(){
-        panelHolder.GetComponent<LevelSelectMapGenerator>().LevelPopUpSection.SetActive(true);
+        MapLevelSelectPanel.LevelPopUpSection.InitializeAndOpen();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GameObject detailsPane = GetDetailsPane();
-        detailsPane.SetActive(true);
-        Debug.Log("A intrat "+CityName.text);
+        CityDetailsPanelScript detailsPanel = GetDetailsPanel();
+        detailsPanel.gameObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        GameObject detailsPane = GetDetailsPane();
-        detailsPane.SetActive(false);
-        Debug.Log("A iesit "+CityName.text);
+        CityDetailsPanelScript detailsPanel = GetDetailsPanel();
+        detailsPanel.gameObject.SetActive(false);
     }
+
+    private CityDetailsPanelScript _detailsPanelInstance;
+    private RectTransform _detailsPanelRectTransform;
+    private RectTransform _mapLevelSelectPanelRectTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _mapLevelSelectPanelRectTransform = MapLevelSelectPanel.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_detailsPane != null && _detailsPane.activeSelf)
+        if (_detailsPanelInstance != null && _detailsPanelInstance.gameObject.activeSelf)
         {
+            //only god knows why this constant is required
+            //but it just won't display corectly otherwise
             float multiplicationConstant = 2.1f;
 
+            // +10f for a bit of offset from the actual cursor position
             float finalX = Input.mousePosition.x + 10f;
             float finalY = Input.mousePosition.y + 10f;
 
-            RectTransform panelRect = panelHolder.GetComponent<RectTransform>();
-            if (finalX + _detailsPaneRectTransform.rect.width >= panelRect.rect.width)
-                finalX -= _detailsPaneRectTransform.rect.width * multiplicationConstant;
+            if (finalX + _detailsPanelRectTransform.rect.width >= _mapLevelSelectPanelRectTransform.rect.width)
+                finalX -= _detailsPanelRectTransform.rect.width * multiplicationConstant;
 
-            if (finalY + _detailsPaneRectTransform.rect.height >= panelRect.rect.height)
-                finalY -= _detailsPaneRectTransform.rect.height * multiplicationConstant;
+            if (finalY + _detailsPanelRectTransform.rect.height >= _mapLevelSelectPanelRectTransform.rect.height)
+                finalY -= _detailsPanelRectTransform.rect.height * multiplicationConstant;
 
-            _detailsPane.transform.position = new Vector3(finalX, finalY, 0f);
+            _detailsPanelInstance.transform.position = new Vector3(finalX, finalY, 0f);
         }
     }
 }

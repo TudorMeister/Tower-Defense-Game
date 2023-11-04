@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa39a2992cdaa49b104565f15ae87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelHolder: {fileID: 0}
-  detailsPanePrefab: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
+  MapLevelSelectPanel: {fileID: 0}
+  DetailsPanelPrefab: {fileID: 4632625764684829782, guid: afa65f410e296664ba2d485ea05a9ac0,
     type: 3}
   CityName: {fileID: 3678022556189723084}
   LevelDetails: {fileID: 8430680262680303470}
