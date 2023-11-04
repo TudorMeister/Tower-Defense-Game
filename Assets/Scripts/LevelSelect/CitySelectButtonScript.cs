@@ -56,21 +56,28 @@ public class CitySelectButtonScript : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         if (_detailsPanelInstance != null && _detailsPanelInstance.gameObject.activeSelf)
         {
-            //only god knows why this constant is required
-            //but it just won't display corectly otherwise
-            float multiplicationConstant = 2.1f;
-
             // +10f for a bit of offset from the actual cursor position
-            float finalX = Input.mousePosition.x + 10f;
-            float finalY = Input.mousePosition.y + 10f;
+            float finalX = Input.mousePosition.x + 40f;
+            float finalY = Input.mousePosition.y + 40f;
 
-            if (finalX + _detailsPanelRectTransform.rect.width >= _mapLevelSelectPanelRectTransform.rect.width)
-                finalX -= _detailsPanelRectTransform.rect.width * multiplicationConstant;
+            Vector3[] cornersDetailsPanel = new Vector3[4];
+            _detailsPanelRectTransform.GetWorldCorners(cornersDetailsPanel);
 
-            if (finalY + _detailsPanelRectTransform.rect.height >= _mapLevelSelectPanelRectTransform.rect.height)
-                finalY -= _detailsPanelRectTransform.rect.height * multiplicationConstant;
+            Vector3[] cornersMapPanel = new Vector3[4];
+            _mapLevelSelectPanelRectTransform.GetWorldCorners(cornersMapPanel);
 
-            _detailsPanelInstance.transform.position = new Vector3(finalX, finalY, 0f);
+            float detailsWidth = Mathf.Abs(cornersDetailsPanel[2].x - cornersDetailsPanel[0].x);
+            float detailsHeight = Mathf.Abs(cornersDetailsPanel[2].y - cornersDetailsPanel[0].y);
+            float mapWidth = Mathf.Abs(cornersMapPanel[2].x - cornersMapPanel[0].x);
+            float mapHeight = Mathf.Abs(cornersMapPanel[2].y - cornersMapPanel[0].y);
+
+            if (finalX + detailsWidth >= mapWidth)
+                finalX -= detailsWidth + 80f;
+
+            if (finalY + detailsHeight >= mapHeight)
+                finalY -= detailsHeight + 80f;
+
+            _detailsPanelRectTransform.position = new Vector3(finalX, finalY, 0f);
         }
     }
 }

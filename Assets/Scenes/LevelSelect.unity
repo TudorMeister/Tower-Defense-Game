@@ -1809,6 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelPopUpSection: {fileID: 351743540}
+  UICamera: {fileID: 232807098}
 --- !u!1 &2145859469
 GameObject:
   m_ObjectHideFlags: 0
