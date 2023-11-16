@@ -11,9 +11,9 @@ public class JsonDataService : IDataService
     private const string KEY = "jiTreShlR5vtV8N/UBlyE1fz+frGJTZDSmyhIc/RGEw=";
     private const string IV = "zuvR4zCvSIHBczrKoOL+VA==";
 
-    public T LoadData<T>(string Path, bool Encrypt)
+    public T LoadData<T>(string FilePath, bool Encrypt)
     {
-        string path = Application.persistentDataPath + Path;
+        string path = Path.Combine(Application.persistentDataPath, FilePath);
 
         if(!File.Exists(path))
         {
@@ -60,9 +60,9 @@ public class JsonDataService : IDataService
         }
     }
 
-    public bool SaveData<T>(string Path, T Data, bool Encrypt)
+    public bool SaveData<T>(string FilePath, T Data, bool Encrypt)
     {
-        string path = Application.persistentDataPath + Path;
+        string path = Path.Combine(Application.persistentDataPath, FilePath);
         if (File.Exists(path))
         {
             Debug.Log("File already exists. Deleting "+path);
