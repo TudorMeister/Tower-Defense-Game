@@ -2,46 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public interface ITurretBase
 {
-    public Transform target;
+    long Health { get; set; }
+}
 
-    [Header("Turret Attributes")]
-    public float fireRate = 1f;
-    public float fireCountDown = 0f;
+public interface ITurretOffensive
+{
+    Transform Target { get; set; }
+    float ShotRate { get; set; }
+    float TimeUntilNextShot { get; set; }
+    float TurnSpeed { get; set; }
+    GameObject BulletPrefab { get; set; }
+    Transform FirePoint { get; set; }
 
-    [Header("Unity Setup Fields")]
-    public float turnSpeed = 10f;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    void Update();
+    void Shoot();
+}
 
-    void Update()
+public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
+{
+    [Header("ITurretBase")]
+    [SerializeField] private long health = 1000;
+    public long Health { get { return health; } set { health = value; } }
+
+    [Header("ITurretOffensive")]
+    [SerializeField] private Transform target;
+    public Transform Target { get { return target; } set { target = value; } }
+
+    [SerializeField] private float shotRate = 2f;
+    public float ShotRate { get { return shotRate; } set { shotRate = value; } }
+
+    [SerializeField] private float timeUntilNextShot = 0f;
+    public float TimeUntilNextShot { get { return timeUntilNextShot; } set { timeUntilNextShot = value; } }
+
+    [SerializeField] private float turnSpeed = 10f;
+    public float TurnSpeed { get { return turnSpeed; } set { turnSpeed = value; } }
+
+    [SerializeField] private GameObject bulletPrefab;
+    public GameObject BulletPrefab { get { return bulletPrefab; } set { bulletPrefab = value; } }
+
+    [SerializeField] private Transform firePoint;
+    public Transform FirePoint { get { return firePoint; } set { firePoint = value; } }
+
+    public void Update()
     {
-        if (target)
+        if (Target)
         {
             Vector3 dir = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if (fireCountDown <= 0f && Quaternion.Angle(transform.rotation, lookRotation) < 20.0f)
+            if (TimeUntilNextShot <= 0f && Quaternion.Angle(transform.rotation, lookRotation) < 10.0f)
             {
                 Shoot();
-                fireCountDown = 1f / fireRate;
+                timeUntilNextShot = 1f / shotRate;
             }
 
-            fireCountDown -= Time.deltaTime;
+            timeUntilNextShot -= Time.deltaTime;
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet)
         {
-            bullet.Chase(target);
+            bullet.Chase(Target);
         }
     }
 }
