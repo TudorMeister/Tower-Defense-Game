@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private Transform _target;
+    private Enemy _target;
 
     public float speed = 70f;
 
     public GameObject impactEffect;
 
-    public void Chase(Transform target) {
+    [SerializeField]
+    private int damage = 1;
+
+    public void Chase(Enemy target) {
         if (target) {
             _target = target;
         }
@@ -21,7 +24,7 @@ public class Bullet : MonoBehaviour {
             return;
         }
 
-        Vector3 dir = _target.position - transform.position;
+        Vector3 dir = _target.transform.position - transform.position;
         float distFrame = speed * Time.deltaTime;
 
         if (dir.magnitude <= distFrame) {
@@ -33,8 +36,10 @@ public class Bullet : MonoBehaviour {
     }
 
     void HitTarget () {
-        GameObject effect = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effect, 2f);
-        Destroy(_target.gameObject);
+        //GameObject effect = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
+        //Destroy(effect, 2f);
+        //Destroy(_target.gameObject);
+        _target.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }

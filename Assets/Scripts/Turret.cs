@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,15 @@ public interface ITurretBase
 
 public interface ITurretOffensive
 {
-    Transform Target { get; set; }
+    Enemy Target { get; set; }
     float ShotRate { get; set; }
     float TimeUntilNextShot { get; set; }
     float TurnSpeed { get; set; }
     GameObject BulletPrefab { get; set; }
     Transform FirePoint { get; set; }
+
+    int Range { get; set; }
+
 
     void Update();
     void Shoot();
@@ -27,8 +31,8 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
     public long Health { get { return health; } set { health = value; } }
 
     [Header("ITurretOffensive")]
-    [SerializeField] private Transform target;
-    public Transform Target { get { return target; } set { target = value; } }
+    [SerializeField] private Enemy target;
+    public Enemy Target { get { return target; } set { target = value; } }
 
     [SerializeField] private float shotRate = 2f;
     public float ShotRate { get { return shotRate; } set { shotRate = value; } }
@@ -45,22 +49,51 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
     [SerializeField] private Transform firePoint;
     public Transform FirePoint { get { return firePoint; } set { firePoint = value; } }
 
+    [SerializeField] private int range;
+    public int Range { get { return range; } set {  range = value; } }
+
+
     public void Update()
     {
+        //Debug.Log("1");
         if (Target)
         {
-            Vector3 dir = target.position - transform.position;
+            float dist = Vector3.Distance(transform.position, target.transform.position);
+            if (dist > range)
+            {
+                Target = null;
+                return;
+            }
+            Vector3 dir = target.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if (TimeUntilNextShot <= 0f && Quaternion.Angle(transform.rotation, lookRotation) < 10.0f)
+            if (TimeUntilNextShot <= 0f)
             {
                 Shoot();
-                timeUntilNextShot = 1f / shotRate;
+                timeUntilNextShot = shotRate;
             }
 
             timeUntilNextShot -= Time.deltaTime;
+        } else
+        {
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            Debug.Log(enemies.Length);
+            float distMin = 99999999999.0f;
+            foreach (Enemy enemy in enemies)
+            {
+                float dist = Vector3.Distance(transform.position, enemy.transform.position);
+                if (dist < distMin)
+                {
+                    distMin = dist;
+                    if (dist < range)
+                    {
+                        Target = enemy;
+                        target = enemy;
+                    }
+                }
+            }
         }
     }
 
@@ -74,4 +107,8 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
             bullet.Chase(Target);
         }
     }
+
+
+
+
 }
