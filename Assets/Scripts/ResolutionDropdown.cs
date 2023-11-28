@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ResolutionDropdown : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class ResolutionDropdown : MonoBehaviour
         // Get the available screen resolutions
         resolutions = Screen.resolutions;
 
+        // Sort resolutions by width and height in descending order
+        resolutions = resolutions.OrderByDescending(resolution => resolution.width * resolution.height).ToArray();
+
         // Clear the dropdown options
         resolutionDropdown.ClearOptions();
 
@@ -24,6 +28,8 @@ public class ResolutionDropdown : MonoBehaviour
         foreach (Resolution resolution in resolutions)
         {
             string option = resolution.width + " x " + resolution.height;
+            if (resolution.width == resolutions[0].width && resolution.height == resolutions[0].height)
+                option = "Fullscreen";
             resolutionOptions.Add(option);
         }
 
