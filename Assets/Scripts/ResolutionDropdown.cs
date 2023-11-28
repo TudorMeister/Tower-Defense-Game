@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
@@ -8,50 +7,57 @@ public class ResolutionDropdown : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
 
-    private Resolution[] resolutions;
+    private Resolution[] _resolutions;
 
     void Start()
     {
         // Get the available screen resolutions
-        resolutions = Screen.resolutions;
+        _resolutions = Screen.resolutions;
 
         // Sort resolutions by width and height in descending order
-        resolutions = resolutions.OrderByDescending(resolution => resolution.width * resolution.height).ToArray();
+        _resolutions = _resolutions
+            .GroupBy(resolution => new { resolution.width, resolution.height })
+            .Select(group => group.First())
+            .OrderByDescending(resolution => resolution.width * resolution.height)
+            .ToArray();
 
         // Clear the dropdown options
         resolutionDropdown.ClearOptions();
 
         // Create a list of resolution strings
-        List<string> resolutionOptions = new List<string>();
-
-        // Add each resolution as a string to the list
-        foreach (Resolution resolution in resolutions)
+        List<string> resolutionOptions = new List<string>
         {
-            string option = resolution.width + " x " + resolution.height;
-            if (resolution.width == resolutions[0].width && resolution.height == resolutions[0].height)
-                option = "Fullscreen";
-            if (!resolutionOptions.Contains(option))
-                resolutionOptions.Add(option);
-        }
+            "Fullscreen"
+        };
+
+        resolutionOptions.AddRange(_resolutions
+            .Select(resolution =>
+                $"{resolution.width} x {resolution.height}")
+            .ToList()
+        );
 
         // Add the resolution options to the dropdown
         resolutionDropdown.AddOptions(resolutionOptions);
 
         // Set the default resolution to the current screen resolution
-        resolutionDropdown.value = FindCurrentResolutionIndex();
+        int savedResolutionIndex = PlayerPrefs.GetInt("SelectedResolutionIndex", FindCurrentResolutionIndex());
+        resolutionDropdown.value = savedResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
     // Find the index of the current screen resolution in the resolutions array
     private int FindCurrentResolutionIndex()
     {
+        if (Screen.fullScreen)
+            return 0;
+
         Resolution currentResolution = Screen.currentResolution;
 
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < _resolutions.Length; i++)
         {
-            if (resolutions[i].width == currentResolution.width && resolutions[i].height == currentResolution.height)
+            if (_resolutions[i].width == currentResolution.width && _resolutions[i].height == currentResolution.height)
             {
-                return i;
+                return i+1;
             }
         }
 
@@ -62,8 +68,23 @@ public class ResolutionDropdown : MonoBehaviour
     // Called when the dropdown value changes
     public void OnResolutionChanged(int resolutionIndex)
     {
+        bool fullScreen;
+        //Fullscreen
+        //No return since we want to also apply the first resolution
+        if (resolutionIndex == 0)
+        {
+            fullScreen = true;
+        }
+        else
+        {
+            fullScreen = false;
+            resolutionIndex -= 1;
+        }
+
         // Set the selected resolution
-        Resolution selectedResolution = resolutions[resolutionIndex*2];
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
+        Resolution selectedResolution = _resolutions[resolutionIndex];
+        Screen.SetResolution(selectedResolution.width, selectedResolution.height, fullScreen);
+        Screen.fullScreen = fullScreen;
+        PlayerPrefs.SetInt("SelectedResolutionIndex", resolutionIndex+1);
     }
 }
