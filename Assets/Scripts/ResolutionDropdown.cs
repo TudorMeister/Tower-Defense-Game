@@ -30,7 +30,8 @@ public class ResolutionDropdown : MonoBehaviour
             string option = resolution.width + " x " + resolution.height;
             if (resolution.width == resolutions[0].width && resolution.height == resolutions[0].height)
                 option = "Fullscreen";
-            resolutionOptions.Add(option);
+            if (!resolutionOptions.Contains(option))
+                resolutionOptions.Add(option);
         }
 
         // Add the resolution options to the dropdown
@@ -62,7 +63,7 @@ public class ResolutionDropdown : MonoBehaviour
     public void OnResolutionChanged(int resolutionIndex)
     {
         // Set the selected resolution
-        Resolution selectedResolution = resolutions[resolutionIndex];
+        Resolution selectedResolution = resolutions[resolutionIndex*2];
         Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
     }
 }
