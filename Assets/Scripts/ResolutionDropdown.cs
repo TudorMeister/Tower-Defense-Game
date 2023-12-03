@@ -68,16 +68,23 @@ public class ResolutionDropdown : MonoBehaviour
     // Called when the dropdown value changes
     public void OnResolutionChanged(int resolutionIndex)
     {
-        bool fullScreen;
-        //Fullscreen
-        //No return since we want to also apply the first resolution
+        bool fullScreen = true;
+        
         if (resolutionIndex == 0)
         {
             fullScreen = true;
         }
         else
         {
-            fullScreen = false;
+            if (Screen.fullScreen == true)
+            {
+                    fullScreen = true;
+            }
+            else
+            {
+                fullScreen = false;
+            }
+            
             resolutionIndex -= 1;
         }
 
@@ -85,6 +92,6 @@ public class ResolutionDropdown : MonoBehaviour
         Resolution selectedResolution = _resolutions[resolutionIndex];
         Screen.SetResolution(selectedResolution.width, selectedResolution.height, fullScreen);
         Screen.fullScreen = fullScreen;
-        PlayerPrefs.SetInt("SelectedResolutionIndex", resolutionIndex+1);
+        PlayerPrefs.SetInt("SelectedResolutionIndex", resolutionIndex);
     }
 }
