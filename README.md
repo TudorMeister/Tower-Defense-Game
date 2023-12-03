@@ -1,3 +1,7 @@
+## Pentru Reviewers :
+- Anumite parti ale jocului se gasesc in branch-uri diferite denumite sugestiv.
+- Recenzia vrem sa o primim prin mesaj privat pe Teams
+
 # Tower-Defense-Game
 
 Tipul Jocului: Tower Defense   
