@@ -78,10 +78,8 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
             timeUntilNextShot -= Time.deltaTime;
         } else
         {
-            Enemy[] enemies = FindObjectsOfType<Enemy>();
-            Debug.Log(enemies.Length);
             float distMin = 99999999999.0f;
-            foreach (Enemy enemy in enemies)
+            foreach (Enemy enemy in GameManager.Instance.enemiesList)
             {
                 float dist = Vector3.Distance(transform.position, enemy.transform.position);
                 if (dist < distMin)
@@ -99,7 +97,7 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
 
     public void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet)
@@ -109,6 +107,11 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
     }
 
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }
 
 
 }

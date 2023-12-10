@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NavPoint
   - Navigation
+  - Target
   layers:
   - Default
   - TransparentFX
