@@ -226,6 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b55f54309e3084e85241a1c50e6bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1000
   target: {fileID: 0}
-  turret: {fileID: 3510516322811498624}
-  turnSpeed: 10
+  shotRate: 0.5
+  timeUntilNextShot: 0
+  turnSpeed: 50
+  bulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
+    type: 3}
+  firePoint: {fileID: 4465808108686809933}
+  range: 300
