@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2310327141450782321}
   - component: {fileID: 3851315324529349831}
   - component: {fileID: 3726098294176081713}
+  - component: {fileID: 1976183197538968433}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,4 +62,17 @@ MonoBehaviour:
   enemyPrefab: {fileID: 532992301216728321, guid: 29235b5094f46014db4e83d892cdeef3,
     type: 3}
   spawnPoint: {fileID: 0}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 10
+--- !u!114 &1976183197538968433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727960194378457256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83eee5e49d7af2d40998191c5ce0e273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardTurretPrefab: {fileID: 0}
