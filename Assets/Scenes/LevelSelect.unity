@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -656,6 +656,12 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &321261243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1562813844757456193, guid: f486532cc4a345c47a5675be837144f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 79818253217467377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351743538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,6 +1972,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 79818253217467377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932233574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321261243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633f9e07bd958b943b43901e23f85540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2030881716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,15 +2357,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4773149462030374009, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932233574}
+    - target: {fileID: 4773149462030374009, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Akriel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773149462030374009, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSelector, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7410371331878097319, guid: f486532cc4a345c47a5675be837144f8,
         type: 3}
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8430680262680303470, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      propertyPath: m_text
+      value: 'Level N/A
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1562813844757456193, guid: f486532cc4a345c47a5675be837144f8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1932233574}
   m_SourcePrefab: {fileID: 100100000, guid: f486532cc4a345c47a5675be837144f8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
