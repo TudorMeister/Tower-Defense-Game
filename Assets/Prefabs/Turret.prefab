@@ -230,7 +230,7 @@ MonoBehaviour:
   target: {fileID: 0}
   shotRate: 0.5
   timeUntilNextShot: 0
-  turnSpeed: 50
+  turnSpeed: 5
   bulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
     type: 3}
   firePoint: {fileID: 4465808108686809933}

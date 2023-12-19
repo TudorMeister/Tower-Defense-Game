@@ -69,7 +69,14 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
             Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if (TimeUntilNextShot <= 0f)
+            // Extract the y-axis Euler angles
+            float currentAngleY = transform.rotation.eulerAngles.y;
+            float targetAngleY = lookRotation.eulerAngles.y;
+
+            // Calculate the angle difference on the y-axis
+            float angleY = Mathf.Abs(Mathf.DeltaAngle(currentAngleY, targetAngleY));
+
+            if (TimeUntilNextShot <= 0f && angleY < 40)
             {
                 Shoot();
                 timeUntilNextShot = shotRate;
