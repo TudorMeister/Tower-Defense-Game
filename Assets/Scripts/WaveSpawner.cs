@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public Transform[] SpawnPoints;
+    public SpawnPoint[] SpawnPoints;
     public float timeBetweenWaves = 5f;
     private float countdown = 2f;
+    private int countdownToDisplay = 3;
     private int waveIndex = 0;
 
-    private Transform[] _selectedSpawnPoints;
+    private SpawnPoint[] _selectedSpawnPoints;
     private int[] _selectedSpawnPointsEnemyCount;
+
+    void Start()
+    {
+        UpdateSelectedSpawnPoints();
+        _selectedSpawnPointsEnemyCount = ComputeEnemiesPerSpawnpoint(waveIndex*2);
+        ShowHolograms();
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,6 +30,13 @@ public class WaveSpawner : MonoBehaviour
         {
             SpawnWave();
             countdown = timeBetweenWaves;
+            countdownToDisplay = (int)countdown;
+        }
+
+        if (countdown <= countdownToDisplay)
+        {
+            countdownToDisplay = (int)Mathf.Floor(countdown);
+            UpdateHolograms();
         }
 
         countdown -= Time.deltaTime;
@@ -41,23 +57,19 @@ public class WaveSpawner : MonoBehaviour
     void SpawnWave()
     {
         waveIndex++;
-        UpdateSelectedSpawnPoints();
-        _selectedSpawnPointsEnemyCount = ComputeEnemiesPerSpawnpoint(waveIndex*2);
-
-        // for (int i = 0; i < waveIndex; i++) 
-        // {
-        //     SpawnEnemy();
-        //     yield return new WaitForSeconds(0.3f);
-        // }
+        ClearHolograms();
 
         for (int i = 0; i < _selectedSpawnPoints.Length; i++)
         {
             StartCoroutine(SpawnWaveForSpawnPoint(_selectedSpawnPoints[i], _selectedSpawnPointsEnemyCount[i]));
         }
 
+        UpdateSelectedSpawnPoints();
+        _selectedSpawnPointsEnemyCount = ComputeEnemiesPerSpawnpoint(waveIndex*2);
+        ShowHolograms();
     }
 
-    IEnumerator SpawnWaveForSpawnPoint(Transform SpawnPoint, int NumberOfEnemies)
+    IEnumerator SpawnWaveForSpawnPoint(SpawnPoint SpawnPoint, int NumberOfEnemies)
     {
         for (int i = 0; i < NumberOfEnemies; i++) 
         {
@@ -66,9 +78,9 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(Transform SpawnPoint)
+    void SpawnEnemy(SpawnPoint SpawnPoint)
     {
-        Instantiate(enemyPrefab, SpawnPoint.position, SpawnPoint.rotation);
+        Instantiate(enemyPrefab, SpawnPoint.transform.position, SpawnPoint.transform.rotation);
     }
 
 
@@ -102,5 +114,55 @@ public class WaveSpawner : MonoBehaviour
         }
 
         return toReturn;
+    }
+
+    void ClearHolograms()
+    {
+        foreach (SpawnPoint spawnPoint in _selectedSpawnPoints)
+        {
+            spawnPoint.SetHologramVisibility(false);
+        }
+    }
+
+    void ShowHolograms()
+    {
+        for (int i = 0; i < _selectedSpawnPoints.Length; i++)
+        {
+            if (_selectedSpawnPointsEnemyCount[i] == 0)
+                continue;
+
+            _selectedSpawnPoints[i].SetHologramVisibility(true);
+        }
+    }
+
+
+    void UpdateHolograms()
+    {
+        for (int i=0;i<_selectedSpawnPoints.Length; i++)
+        {
+            UpdateHologramContent(i);
+        }
+    }
+
+    void UpdateHologramContent(int selectedSpawnPointIndex)
+    {
+        SpawnPoint spawnPoint = _selectedSpawnPoints[selectedSpawnPointIndex];
+        int enemiesCount = _selectedSpawnPointsEnemyCount[selectedSpawnPointIndex];
+        int countdownToDisplay = this.countdownToDisplay + 1;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append(_selectedSpawnPointsEnemyCount[selectedSpawnPointIndex]);
+        if (enemiesCount == 1)
+            stringBuilder.Append(" enemy ");
+        else
+            stringBuilder.Append(" enemies ");
+        stringBuilder.Append("will spawn here in ");
+        stringBuilder.Append(countdownToDisplay);
+        if (countdownToDisplay == 1)
+            stringBuilder.Append(" second.");
+        else
+            stringBuilder.Append(" seconds.");
+
+        spawnPoint.SetHologramContent(stringBuilder.ToString());
     }
 }
