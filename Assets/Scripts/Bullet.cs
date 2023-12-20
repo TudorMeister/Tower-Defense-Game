@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private Enemy _target;
+    private BaseEnemy _target;
 
     public float speed = 70f;
 
@@ -11,11 +11,8 @@ public class Bullet : MonoBehaviour {
     [SerializeField]
     private int damage = 1;
 
-    public void Chase(Enemy target) {
-        if (target) {
-            _target = target;
-        }
-        return;
+    public void Chase(BaseEnemy target) {
+        _target = target;
     }
 
     void Update() {

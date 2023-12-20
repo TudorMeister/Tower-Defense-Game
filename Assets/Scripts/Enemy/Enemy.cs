@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Enemy : MonoBehaviour
+
+public class Enemy : BaseEnemy
 {
+    public override int Health { get; set; } = 3;
+
+    public override int DamageToInflict {get; set;} = 1;
+
     [SerializeField]
-    private int health = 3;
-    [SerializeField]
-    private int damage = 1;
-    [SerializeField]
-    private int range = 3;
+    private int _range = 6;
 
     private Target Target;
 
@@ -21,26 +19,25 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
-        health = health - damage;
-        checkDeath();
+        Health -= damage;
+        if (IsDead())
+            Destroy(gameObject);
     }
 
-    void checkDeath()
+    public override bool IsDead()
     {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        return Health <= 0;
     }
 
     private void Update()
     {
         float dist = Vector3.Distance(transform.position, Target.transform.position);
-        if (dist <= range) 
+        Debug.Log(dist);
+        if (dist <= _range) 
         {
-            Target.takeDamage(damage);
+            Target.takeDamage(DamageToInflict);
             Destroy(gameObject);
         }
     }
@@ -53,7 +50,7 @@ public class Enemy : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, _range);
     }
 
 

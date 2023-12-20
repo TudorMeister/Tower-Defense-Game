@@ -119,9 +119,12 @@ GameObject:
   - component: {fileID: 6323639768254536188}
   - component: {fileID: 8376155870110166197}
   - component: {fileID: 5916505275236651573}
-  - component: {fileID: 7936766500007627745}
+  - component: {fileID: 4471682875840843862}
+  - component: {fileID: 4824279644306895089}
+  - component: {fileID: -6431762038304272097}
+  - component: {fileID: -3217022420922973496}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: BasicTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +217,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7936766500007627745
+--- !u!114 &4471682875840843862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,15 +226,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 9104812125791369257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b55f54309e3084e85241a1c50e6bfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  target: {fileID: 0}
-  shotRate: 0.5
-  timeUntilNextShot: 0
-  turnSpeed: 5
-  bulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
-    type: 3}
-  firePoint: {fileID: 4465808108686809933}
+  ShootBehaviour: {fileID: -6431762038304272097}
+  MovementBehaviour: {fileID: 4824279644306895089}
+  TargetBehaviour: {fileID: -3217022420922973496}
+--- !u!114 &4824279644306895089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104812125791369257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abad84249c3e1cf449513ae5d952bebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 4471682875840843862}
   range: 30
+  turnSpeed: 5
+--- !u!114 &-6431762038304272097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104812125791369257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abda8bc15b784445b8e0b809db980d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
+    type: 3}
+  Turret: {fileID: 4471682875840843862}
+  FirePoints:
+  - {fileID: 4465808108686809933}
+  ShootCooldownInSeconds: 2
+--- !u!114 &-3217022420922973496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104812125791369257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef407ac33917d984481b0ac7694d3646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Turret: {fileID: 4471682875840843862}
+  TargetingRange: 30

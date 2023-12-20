@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public interface ITurretBase
@@ -85,18 +82,15 @@ public class Turret : MonoBehaviour, ITurretBase, ITurretOffensive
             timeUntilNextShot -= Time.deltaTime;
         } else
         {
-            float distMin = 99999999999.0f;
+            float distMin = range;
             foreach (Enemy enemy in GameManager.Instance.enemiesList)
             {
                 float dist = Vector3.Distance(transform.position, enemy.transform.position);
                 if (dist < distMin)
                 {
                     distMin = dist;
-                    if (dist < range)
-                    {
-                        Target = enemy;
-                        target = enemy;
-                    }
+                    Target = enemy;
+                    target = enemy;
                 }
             }
         }
