@@ -9,4 +9,8 @@ public abstract class BaseEnemy : MonoBehaviour
     public abstract void TakeDamage(int Damage);
 
     public abstract bool IsDead();
+
+    public abstract void SetMaxSpeed(float Speed);
+
+    public abstract float GetMaxSpeed();
 }

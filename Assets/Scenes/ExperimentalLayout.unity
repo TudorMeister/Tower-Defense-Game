@@ -3017,7 +3017,7 @@ PrefabInstance:
         type: 3}
       propertyPath: standardTurretPrefab
       value: 
-      objectReference: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+      objectReference: {fileID: 9104812125791369257, guid: 6ea80318188aed04db9960887f454bd0,
         type: 3}
     - target: {fileID: 2310327141450782321, guid: 3a6be398fc5f16f4d91da32acc574a5d,
         type: 3}

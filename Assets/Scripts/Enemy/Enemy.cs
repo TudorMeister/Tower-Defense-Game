@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 
 
@@ -12,10 +13,13 @@ public class Enemy : BaseEnemy
 
     private Target Target;
 
+    private AIPath _aiPath;
+
     private void Awake()
     {
         GameManager.Instance.enemiesList.Add(this);
         Target = GameObject.Find("Target").GetComponent<Target>();
+        _aiPath = GetComponent<AIPath>();
     }
 
 
@@ -52,6 +56,13 @@ public class Enemy : BaseEnemy
         Gizmos.DrawWireSphere(transform.position, _range);
     }
 
+    public override void SetMaxSpeed(float Speed)
+    {
+        _aiPath.maxSpeed = Speed;
+    }
 
-
+    public override float GetMaxSpeed()
+    {
+        return _aiPath.maxSpeed;
+    }
 }

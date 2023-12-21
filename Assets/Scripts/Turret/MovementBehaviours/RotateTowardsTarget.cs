@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class RotateTowardsTarget : BaseMovementBehaviour
@@ -17,7 +18,7 @@ public class RotateTowardsTarget : BaseMovementBehaviour
         if (turret.TargetBehaviour.Targets.Count == 0)
             return;
 
-        BaseEnemy target = turret.TargetBehaviour.Targets[0];
+        BaseEnemy target = turret.TargetBehaviour.Targets.First();
         if (!target)
             return;
 

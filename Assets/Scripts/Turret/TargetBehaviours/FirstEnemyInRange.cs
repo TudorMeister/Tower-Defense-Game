@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClosestEnemyInRange : BaseTargetBehaviour
 {
     public BaseTurret Turret;
-    public override List<BaseEnemy> Targets { get; set; } = new List<BaseEnemy>();
+    public override ISet<BaseEnemy> Targets { get; set; } = new HashSet<BaseEnemy>();
 
     public int TargetingRange;
 
@@ -23,7 +23,7 @@ public class ClosestEnemyInRange : BaseTargetBehaviour
     {
         if (Targets.Count > 0)
         {
-            BaseEnemy enemy = Targets[0];
+            BaseEnemy enemy = Targets.First();
             if (!enemy){
                 Targets.Clear();
                 return;

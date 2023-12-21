@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class ChaseShootFromAllPoints : BaseShootBehaviour
@@ -30,7 +31,7 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
         if (Turret.TargetBehaviour.Targets.Count == 0)
             return false;
 
-        BaseEnemy target = Turret.TargetBehaviour.Targets[0];
+        BaseEnemy target = Turret.TargetBehaviour.Targets.First();
         if (!target)
             return false;
 
@@ -64,7 +65,7 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
             {
                 bullet.FixedDamage = BulletDamage;
                 bullet.FixedSpeed = BulletSpeed;
-                bullet.Chase(Turret, Turret.TargetBehaviour.Targets[0]);
+                bullet.Chase(Turret, Turret.TargetBehaviour.Targets.First());
             }
         }
     }
