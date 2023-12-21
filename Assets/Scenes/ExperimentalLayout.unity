@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0cc36b32e67f1246ab8e858ec0b633f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 15
   rotationSpeed: 3
 --- !u!114 &503894738
 MonoBehaviour:
@@ -3017,7 +3017,7 @@ PrefabInstance:
         type: 3}
       propertyPath: standardTurretPrefab
       value: 
-      objectReference: {fileID: 9104812125791369257, guid: 6c5f9bb53f29c8d41815d620d2018ce9,
+      objectReference: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
         type: 3}
     - target: {fileID: 2310327141450782321, guid: 3a6be398fc5f16f4d91da32acc574a5d,
         type: 3}

@@ -261,6 +261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
     type: 3}
+  <BulletDamage>k__BackingField: 1
+  <BulletSpeed>k__BackingField: 70
   Turret: {fileID: 4471682875840843862}
   FirePoints:
   - {fileID: 4465808108686809933}

@@ -1,9 +1,14 @@
-using System;
 using UnityEngine;
 
 public class ChaseShootFromAllPoints : BaseShootBehaviour
 {
     public GameObject BulletPrefab;
+
+    [field:SerializeField]
+    public override int BulletDamage {get; set;}
+
+    [field:SerializeField]
+    public override float BulletSpeed {get; set;}
     public BaseTurret Turret;
 
     public Transform[] FirePoints;
@@ -57,7 +62,9 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
 
             if (bullet)
             {
-                bullet.Chase(Turret.TargetBehaviour.Targets[0]);
+                bullet.FixedDamage = BulletDamage;
+                bullet.FixedSpeed = BulletSpeed;
+                bullet.Chase(Turret, Turret.TargetBehaviour.Targets[0]);
             }
         }
     }

@@ -34,7 +34,6 @@ public class Enemy : BaseEnemy
     private void Update()
     {
         float dist = Vector3.Distance(transform.position, Target.transform.position);
-        Debug.Log(dist);
         if (dist <= _range) 
         {
             Target.takeDamage(DamageToInflict);
