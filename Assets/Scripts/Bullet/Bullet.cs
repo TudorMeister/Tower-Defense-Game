@@ -1,21 +1,17 @@
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
+    protected BaseTurret _launchedFrom;
 
-    private Enemy _target;
+    protected BaseEnemy _target;
 
-    public float speed = 70f;
+    public float FixedSpeed {get; set;} = 70f;
 
-    public GameObject impactEffect;
+    public int FixedDamage {get; set;} = 1;
 
-    [SerializeField]
-    private int damage = 1;
-
-    public void Chase(Enemy target) {
-        if (target) {
-            _target = target;
-        }
-        return;
+    public void Chase(BaseTurret WhoLaunches, BaseEnemy Target) {
+        _launchedFrom = WhoLaunches;
+        _target = Target;
     }
 
     void Update() {
@@ -25,7 +21,7 @@ public class Bullet : MonoBehaviour {
         }
 
         Vector3 dir = _target.transform.position - transform.position;
-        float distFrame = speed * Time.deltaTime;
+        float distFrame = FixedSpeed * Time.deltaTime;
 
         if (dir.magnitude <= distFrame) {
             HitTarget();
@@ -35,11 +31,12 @@ public class Bullet : MonoBehaviour {
         transform.Translate(dir.normalized * distFrame, Space.World);
     }
 
-    void HitTarget () {
+    protected void HitTarget () {
         //GameObject effect = (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
         //Destroy(effect, 2f);
         //Destroy(_target.gameObject);
-        _target.TakeDamage(damage);
+        _target.TakeDamage(FixedDamage);
+        _launchedFrom.TargetBehaviour.Targets.Remove(_target);
         Destroy(gameObject);
     }
 }

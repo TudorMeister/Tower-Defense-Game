@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 83eee5e49d7af2d40998191c5ce0e273
+guid: ddb16096f73eb424485d173445f625ea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - standardTurretPrefab: {fileID: 9104812125791369257, guid: 6c5f9bb53f29c8d41815d620d2018ce9,
-      type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

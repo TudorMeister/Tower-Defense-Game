@@ -215,6 +215,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbcf827f7bdd3e46a9b53dc594563a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  damage: 1
-  range: 8
+  _range: 6
