@@ -6,23 +6,42 @@ public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
 
+    public int startingMoney = 50;
+    public int money = 0;
+
     void Awake () {
         if (instance) {
             Debug.LogError("More than one BuildManager in scene!");
             return;
         }
         instance = this;
+        money = startingMoney;
     }
+
+    public GameObject cannoballTurret;
+    public GameObject freezeTurret;
+    public GameObject machineGunTurret;
 
     public GameObject standardTurretPrefab;
 
-    void Start () {
-        turretToBuild = standardTurretPrefab;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            standardTurretPrefab = cannoballTurret;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            standardTurretPrefab = freezeTurret;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            standardTurretPrefab = machineGunTurret;
+        }
     }
 
-    private GameObject turretToBuild;
 
     public GameObject GetTurretToBuild () {
-        return turretToBuild;
+        return standardTurretPrefab;
     }
 }

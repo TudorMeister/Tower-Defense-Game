@@ -7,6 +7,11 @@ TagManager:
   - NavPoint
   - Navigation
   - Target
+  - Stop
+  - Esquina
+  - Marcador
+  - Blocks
+  - IaCar
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - Navigation
   - Enemy
   - Street
-  - 
+  - Terrain
   - 
   - 
   - 

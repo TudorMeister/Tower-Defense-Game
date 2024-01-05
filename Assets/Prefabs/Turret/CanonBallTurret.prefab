@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 10
   ShootBehaviour: {fileID: -6431762038304272097}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: -3217022420922973496}
@@ -245,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 4471682875840843862}
-  range: 50
+  range: 200
   turnSpeed: 5
 --- !u!114 &-6431762038304272097
 MonoBehaviour:
@@ -261,12 +262,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 2839434963273119071, guid: 34e585e514f417441a30ff2cf7c8f002,
     type: 3}
-  <BulletDamage>k__BackingField: 5
-  <BulletSpeed>k__BackingField: 20
+  <BulletDamage>k__BackingField: 7
+  <BulletSpeed>k__BackingField: 40
   Turret: {fileID: 4471682875840843862}
   FirePoints:
   - {fileID: 1993661197502917194}
-  ShootCooldownInSeconds: 2
+  ShootCooldownInSeconds: 3
 --- !u!114 &-3217022420922973496
 MonoBehaviour:
   m_ObjectHideFlags: 0

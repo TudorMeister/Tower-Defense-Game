@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Enemy : BaseEnemy
 {
-    public override int Health { get; set; } = 3;
+    [SerializeField]
+    public override int Health { get; set; } = 10;
 
     public override int DamageToInflict {get; set;} = 1;
 
     [SerializeField]
-    private int _range = 6;
+    private int _range = 20;
 
     private Target Target;
 
@@ -47,6 +48,7 @@ public class Enemy : BaseEnemy
 
     private void OnDestroy()
     {
+        BuildManager.instance.money += 1;
         GameManager.Instance.enemiesList.Remove(this);
     }
 

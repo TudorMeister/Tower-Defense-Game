@@ -20,9 +20,20 @@ public class WallNode : MonoBehaviour {
     void OnMouseDown () {
         if (turret) {
             Debug.Log("Can't build there!");
+            return;
         }
 
         GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+
+        if (turretToBuild.GetComponent<BaseTurret>().cost > BuildManager.instance.money)
+        {
+            Debug.Log("Not enough money!");
+            return;   
+        } else
+        {
+            BuildManager.instance.money -= turretToBuild.GetComponent<BaseTurret>().cost;
+        }
+
         turret = (GameObject)Instantiate(turretToBuild, transform.position + heightOffset, transform.rotation);
     }
 

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public float movementSpeed = 5f;
+    public float movementSpeed = 30f;
     public float rotationSpeed = 2f;
+    public float upSpeed = 3f;
+    public float downSpeed = 3f;
 
     void Update()
     {
@@ -22,6 +24,18 @@ public class CameraControl : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical) * movementSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            movement.y = 10f * upSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey (KeyCode.LeftControl)) 
+        {
+            movement.y = -10f * downSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movement = movement * 3;
+        }
         transform.Translate(movement);
     }
 

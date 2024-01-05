@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesList: []
+  canvas: {fileID: 0}
 --- !u!114 &3726098294176081713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +62,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 532992301216728321, guid: 29235b5094f46014db4e83d892cdeef3,
     type: 3}
-  SpawnPoints: []
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   timeBetweenWaves: 10
 --- !u!114 &1976183197538968433
 MonoBehaviour:
@@ -75,4 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83eee5e49d7af2d40998191c5ce0e273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTurretPrefab: {fileID: 0}
+  startingMoney: 50
+  money: 0
+  cannoballTurret: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+    type: 3}
+  freezeTurret: {fileID: 9104812125791369257, guid: 6ea80318188aed04db9960887f454bd0,
+    type: 3}
+  machineGunTurret: {fileID: 9104812125791369257, guid: bc8617b43933ca64b9b49adeb0fc9065,
+    type: 3}
+  standardTurretPrefab: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+    type: 3}
