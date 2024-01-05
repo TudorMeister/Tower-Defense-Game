@@ -14,7 +14,7 @@ public class BuildManager : MonoBehaviour {
         instance = this;
     }
 
-    public GameObject doubleTurretPrefab;
+    public GameObject standardTurretPrefab;
     public GameObject canonBallTurretPrefab;
     public GameObject freezeTurretPrefab;
     public GameObject machineGunTurretPrefab;
