@@ -5,32 +5,59 @@ using UnityEngine;
 public class WallNode : MonoBehaviour {
 
     public Color hoverColor;
-    public Vector3 heightOffset;
+    public Canvas canvas;
+    public bool toggleCanvas = true;
 
-    private GameObject turret;
+    private Renderer _rend;
+    private Color _startColor;
+    private GameObject _lastSelectedTurret;
+    private bool _isOccupied = false;
+    private WallNode _lastSelectedNode;
+    private BuildManager _buildManager;
+    private ShopScript _shopScript;
 
-    private Renderer rend;
-    private Color startColor;
-
-    void Start () {
-        rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
+    void Start() {
+        _rend = GetComponent<Renderer>();
+        _startColor = _rend.material.color;
+        _buildManager = BuildManager.instance;
+        canvas.enabled = false;
+        _shopScript = FindObjectOfType<ShopScript>();
     }
 
-    void OnMouseDown () {
-        if (turret) {
-            Debug.Log("Can't build there!");
-        }
+    void OnMouseDown() {
+        _shopScript.SetLastSelectedNode(this);
+        GameObject turretToBuild = _buildManager.GetTurretToBuild();
+    }
 
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position + heightOffset, transform.rotation);
+    public GameObject GetLastSelectedTurret() {
+        return _lastSelectedTurret;
+    }
+
+    public bool HasTurret() {
+        return _isOccupied;
+    }
+
+    public void SetTurret() {
+        _isOccupied = true;
+    }
+
+    void OnMouseUp() {
+        if (!canvas.enabled) {
+            canvas.enabled = true;
+        }
     }
 
     void OnMouseEnter() {
-        rend.material.color = hoverColor;
+        if (_buildManager.GetTurretToBuild() == null)
+            return;
+        _rend.material.color = hoverColor;
     }
 
-    void OnMouseExit () {
-        rend.material.color = startColor;
+    void OnMouseExit() {
+        _rend.material.color = _startColor;
+    }
+
+    public void HideTurretSelectPanel() {
+        canvas.enabled = false;
     }
 }
