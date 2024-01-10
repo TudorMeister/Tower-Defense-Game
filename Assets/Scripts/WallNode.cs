@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,30 @@ public class WallNode : MonoBehaviour {
     public Color hoverColor;
     public Vector3 heightOffset;
 
+    public Canvas canvas;
+    public bool toggleCanvas = true;
+
+
+
     private GameObject turret;
 
-    private Renderer rend;
-    private Color startColor;
+    private Renderer _rend;
+    private Color _startColor;
+    private GameObject _lastSelectedTurret;
+    private bool _isOccupied = false;
+    private WallNode _lastSelectedNode;
+    private BuildManager _buildManager;
+    private ShopScript _shopScript;
 
-    void Start () {
-        rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
+
+    void Start () { 
+        _rend = GetComponent<Renderer>();
+        _startColor = _rend.material.color;
+        _buildManager = BuildManager.instance;
+        canvas.enabled = false;
+        Debug.Log(canvas.enabled);
+        _shopScript = FindObjectOfType<ShopScript>();
+
     }
 
     void OnMouseDown () {
@@ -38,10 +55,10 @@ public class WallNode : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        rend.material.color = hoverColor;
+        _rend.material.color = hoverColor;
     }
 
     void OnMouseExit () {
-        rend.material.color = startColor;
+        _rend.material.color = _startColor;
     }
 }
