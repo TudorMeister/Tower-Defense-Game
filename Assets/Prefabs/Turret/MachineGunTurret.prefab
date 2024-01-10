@@ -2605,7 +2605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 30
+  cost: 50
   ShootBehaviour: {fileID: -6431762038304272097}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: -3217022420922973496}
@@ -2622,7 +2622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 4471682875840843862}
-  range: 30
+  range: 70
   turnSpeed: 5
 --- !u!114 &-6431762038304272097
 MonoBehaviour:
@@ -2648,7 +2648,7 @@ MonoBehaviour:
   - {fileID: 90093123516508168}
   - {fileID: 2117032515196102225}
   - {fileID: 3118641123515367605}
-  ShootCooldownInSeconds: 0.2
+  ShootCooldownInSeconds: 0.5
 --- !u!114 &-3217022420922973496
 MonoBehaviour:
   m_ObjectHideFlags: 0
