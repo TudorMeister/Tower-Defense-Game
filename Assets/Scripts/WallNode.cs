@@ -5,8 +5,9 @@ using UnityEngine;
 public class WallNode : MonoBehaviour
 {
     public Color hoverColor;
-    public Canvas canvas;
     public bool toggleCanvas = true;
+
+    public Canvas canvas;
 
     private Renderer _rend;
     private Color _startColor;
@@ -21,13 +22,15 @@ public class WallNode : MonoBehaviour
         _rend = GetComponent<Renderer>();
         _startColor = _rend.material.color;
         _buildManager = BuildManager.instance;
+        canvas = FindObjectOfType<Shop>().GetComponentInParent<Canvas>();
         canvas.enabled = false;
         _shopScript = FindObjectOfType<Shop>();
-        Debug.Log(_shopScript);
+        //Debug.Log(_shopScript);
     }
 
     void OnMouseDown()
     {
+        canvas.enabled = true;
         _shopScript.SetLastSelectedNode(this);
         GameObject turretToBuild = _buildManager.GetTurretToBuild();
     }
