@@ -70,7 +70,13 @@ public class ParabolicBullet : Bullet {
         // Process the found entities
         foreach (Collider collider in colliders)
         {
-            Destroy(collider.gameObject);
+            
+            // Check if the script was found
+            if (collider.gameObject.TryGetComponent<BaseEnemy>(out var baseEnemy))
+            {
+
+                baseEnemy.TakeDamage(FixedDamage);
+            }
         }
     }
 }
