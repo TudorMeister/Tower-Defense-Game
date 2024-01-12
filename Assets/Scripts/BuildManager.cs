@@ -28,8 +28,6 @@ public class BuildManager : MonoBehaviour
         instance = this;
 
         money = startingMoney;
-
-        //updateTurretPrefab.isUpgraded = true;
     }
 
     private BaseTurret turretToBuild;

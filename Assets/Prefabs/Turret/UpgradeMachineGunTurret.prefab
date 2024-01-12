@@ -2478,7 +2478,7 @@ GameObject:
   - component: {fileID: -6431762038304272097}
   - component: {fileID: -3217022420922973496}
   m_Layer: 0
-  m_Name: MachineGunTurret
+  m_Name: UpgradeMachineGunTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2550,7 +2550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: baf97fe5b66f7b94c9ac024a3a73fe96, type: 2}
+  - {fileID: 2100000, guid: 71e5516339619304fb5c84cba24fc449, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2608,7 +2608,7 @@ MonoBehaviour:
   cost: 30
   upgradeCost: 35
   heightOffset: {x: 0, y: 5.5, z: 0}
-  upgradeTurret: {fileID: 4471682875840843862, guid: d0441dd948a34644b89393145d504428,
+  upgradeTurret: {fileID: 4471682875840843862, guid: bfb17171eda605f4391842f8904d7800,
     type: 3}
   isUpgraded: 0
   ShootBehaviour: {fileID: -6431762038304272097}
@@ -2643,8 +2643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 2839434963273119071, guid: b2b428e7a5d1e5d45bd98ff4b1f18e97,
     type: 3}
-  <BulletDamage>k__BackingField: 1
-  <BulletSpeed>k__BackingField: 70
+  <BulletDamage>k__BackingField: 3
+  <BulletSpeed>k__BackingField: 80
   Turret: {fileID: 4471682875840843862}
   FirePoints:
   - {fileID: 4465808108686809933}
