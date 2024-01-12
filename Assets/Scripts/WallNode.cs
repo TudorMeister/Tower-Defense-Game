@@ -1,19 +1,13 @@
-using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallNode : MonoBehaviour {
-
+public class WallNode : MonoBehaviour
+{
     public Color hoverColor;
-    public Vector3 heightOffset;
+    public bool toggleCanvas = true;
 
-   // public Canvas canvas;
-   // public bool toggleCanvas = true;
-
-
-
-    private GameObject turret;
+    public Canvas canvas;
 
     private Renderer _rend;
     private Color _startColor;
@@ -21,44 +15,63 @@ public class WallNode : MonoBehaviour {
     private bool _isOccupied = false;
     private WallNode _lastSelectedNode;
     private BuildManager _buildManager;
-    private ShopScript _shopScript;
+    private Shop _shopScript;
 
-
-    void Start () { 
+    void Start()
+    {
         _rend = GetComponent<Renderer>();
         _startColor = _rend.material.color;
         _buildManager = BuildManager.instance;
-        //canvas.enabled = false;
-        //Debug.Log(canvas.enabled);
-       // _shopScript = FindObjectOfType<ShopScript>();
-
+        canvas = FindObjectOfType<Shop>().GetComponentInParent<Canvas>();
+        canvas.enabled = false;
+        _shopScript = FindObjectOfType<Shop>();
+        //Debug.Log(_shopScript);
     }
 
-    void OnMouseDown () {
-        if (turret) {
-            Debug.Log("Can't build there!");
+    void OnMouseDown()
+    {
+        canvas.enabled = true;
+        _shopScript.SetLastSelectedNode(this);
+        GameObject turretToBuild = _buildManager.GetTurretToBuild();
+    }
+
+    public GameObject GetLastSelectedTurret()
+    {
+        return _lastSelectedTurret;
+    }
+
+    public bool HasTurret()
+    {
+        return _isOccupied;
+    }
+
+    public void SetTurret()
+    {
+        _isOccupied = true;
+    }
+
+    void OnMouseUp()
+    {
+        if (!canvas.enabled)
+        {
+            canvas.enabled = true;
+        }
+    }
+
+    void OnMouseEnter()
+    {
+        if (_isOccupied)
             return;
-        }
-
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-
-        if (turretToBuild.GetComponent<BaseTurret>().cost > BuildManager.instance.money)
-        {
-            Debug.Log("Not enough money!");
-            return;   
-        } else
-        {
-            BuildManager.instance.money -= turretToBuild.GetComponent<BaseTurret>().cost;
-        }
-
-        turret = (GameObject)Instantiate(turretToBuild, transform.position + heightOffset, transform.rotation);
-    }
-
-    void OnMouseEnter() {
         _rend.material.color = hoverColor;
     }
 
-    void OnMouseExit () {
+    void OnMouseExit()
+    {
         _rend.material.color = _startColor;
+    }
+
+    public void HideTurretSelectPanel()
+    {
+        canvas.enabled = false;
     }
 }

@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 1, g: 0.74509805, b: 0.30588236, a: 1}
-  heightOffset: {x: 0, y: 5.5, z: 0}
+  canvas: {fileID: 1842573744797025361, guid: 89838608fb32e7344a1e7e74f36a43f0, type: 3}
+  toggleCanvas: 1
