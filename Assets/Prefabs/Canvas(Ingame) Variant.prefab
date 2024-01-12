@@ -419,22 +419,22 @@ PrefabInstance:
     - target: {fileID: 3269861544735518836, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3269861544735518836, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5778330474854329359}
+      objectReference: {fileID: 0}
     - target: {fileID: 3269861544735518836, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 3269861544735518836, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3598755153024991610, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
@@ -501,6 +501,11 @@ PrefabInstance:
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6848710238072707175, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 6309835766740432367}
     - target: {fileID: 8075078336836588538, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
         type: 3}
       propertyPath: m_text
@@ -538,9 +543,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3054613689328336726}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5778330474854329359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8814927677110899545, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
+--- !u!223 &6309835766740432367 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 9076196656896789177, guid: 30a89d09cde96b24aabd4a1e8bb56b17,
     type: 3}
   m_PrefabInstance: {fileID: 3054613689328336726}
   m_PrefabAsset: {fileID: 0}

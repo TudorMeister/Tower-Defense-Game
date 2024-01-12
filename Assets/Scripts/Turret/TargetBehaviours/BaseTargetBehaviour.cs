@@ -8,4 +8,8 @@ public abstract class BaseTargetBehaviour : MonoBehaviour
     public abstract void AddTarget(BaseEnemy NewTarget);
 
     public abstract void RemoveTarget(BaseEnemy Target);
+
+    public abstract void OnTriggerEnter(Collider other);
+
+    public abstract void OnTriggerExit(Collider other);
 }
