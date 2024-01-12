@@ -27,8 +27,10 @@ public class Enemy : BaseEnemy
     public override void TakeDamage(int damage)
     {
         Health -= damage;
-        if (IsDead())
+        if (IsDead()) {
             Destroy(gameObject);
+            BuildManager.instance.money += 1;
+        }
     }
 
     public override bool IsDead()
@@ -48,7 +50,6 @@ public class Enemy : BaseEnemy
 
     private void OnDestroy()
     {
-        BuildManager.instance.money += 1;
         GameManager.Instance.enemiesList.Remove(this);
     }
 

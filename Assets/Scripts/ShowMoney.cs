@@ -9,7 +9,7 @@ public class ShowMoney : MonoBehaviour
 
     private void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        
     }
 
     // Update is called once per frame
