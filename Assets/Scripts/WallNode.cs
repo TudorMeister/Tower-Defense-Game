@@ -25,14 +25,13 @@ public class WallNode : MonoBehaviour
         canvas = FindObjectOfType<Shop>().GetComponentInParent<Canvas>();
         canvas.enabled = false;
         _shopScript = FindObjectOfType<Shop>();
-        //Debug.Log(_shopScript);
     }
 
     void OnMouseDown()
     {
         canvas.enabled = true;
         _shopScript.SetLastSelectedNode(this);
-        GameObject turretToBuild = _buildManager.GetTurretToBuild();
+        BaseTurret turretToBuild = _buildManager.GetTurretToBuild();
     }
 
     public GameObject GetLastSelectedTurret()

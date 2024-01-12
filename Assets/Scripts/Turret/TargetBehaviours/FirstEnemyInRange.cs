@@ -43,11 +43,14 @@ public class ClosestEnemyInRange : BaseTargetBehaviour
             float distMin = TargetingRange;
             foreach (Enemy enemy in GameManager.Instance.enemiesList)
             {
-                float dist = Vector3.Distance(Turret.transform.position, enemy.transform.position);
-                if (dist < distMin)
+                if (Turret)
                 {
-                    distMin = dist;
-                    closestEnemy = enemy;
+                    float dist = Vector3.Distance(Turret.transform.position, enemy.transform.position);
+                    if (dist < distMin)
+                    {
+                        distMin = dist;
+                        closestEnemy = enemy;
+                    }
                 }
             }
 

@@ -2606,6 +2606,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 30
+  upgradeCost: 35
+  heightOffset: {x: 0, y: 5.5, z: 0}
+  upgradeTurret: {fileID: 4471682875840843862, guid: bfb17171eda605f4391842f8904d7800,
+    type: 3}
+  isUpgraded: 0
   ShootBehaviour: {fileID: -6431762038304272097}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: -3217022420922973496}

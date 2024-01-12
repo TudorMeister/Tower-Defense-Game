@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public Vector3 heightOffset;
+    //public Vector3 heightOffset;
 
     private BuildManager _buildManager;
     private WallNode _lastSelectedNode;
@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Standard Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.standardTurretPrefab);
-        heightOffset = new Vector3(0, 5, 0);
+        //heightOffset = new Vector3(0, (float)5.5, 0);
         BuildLastSelectedTurret();
     }
 
@@ -24,7 +24,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("CanonBall Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.canonBallTurretPrefab);
-        heightOffset = new Vector3(0, 2, 0);
+        //heightOffset = new Vector3(0, 2, 0);
         BuildLastSelectedTurret();
     }
 
@@ -32,7 +32,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Freeze Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.freezeTurretPrefab);
-        heightOffset = new Vector3(0, 5, 0);
+        //heightOffset = new Vector3(0, (float)5.5, 0);
         BuildLastSelectedTurret();
     }
 
@@ -40,7 +40,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("MachineGun Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.machineGunTurretPrefab);
-        heightOffset = new Vector3(0, 5, 0);
+        //heightOffset = new Vector3(0, (float)5.5, 0);
         BuildLastSelectedTurret();
     }
 
@@ -54,11 +54,17 @@ public class Shop : MonoBehaviour
                 return;
             }
 
-            GameObject turretToBuild = _buildManager.GetTurretToBuild();
-            if (turretToBuild != null)
+            BaseTurret turretToBuild = _buildManager.GetTurretToBuild();
+            if (_buildManager.money - turretToBuild.cost < 0)
+                Debug.Log("Not enough money!");
+            else
             {
-                Instantiate(turretToBuild, _lastSelectedNode.transform.position + heightOffset, Quaternion.identity);
-                _lastSelectedNode.SetTurret();
+                _buildManager.money -= turretToBuild.cost;
+                if (turretToBuild != null)
+                {
+                    Instantiate(turretToBuild, _lastSelectedNode.transform.position + turretToBuild.heightOffset, Quaternion.identity);
+                    _lastSelectedNode.SetTurret();
+                }
             }
         }
     }
