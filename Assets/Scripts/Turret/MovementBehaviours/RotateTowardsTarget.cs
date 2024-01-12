@@ -22,12 +22,12 @@ public class RotateTowardsTarget : BaseMovementBehaviour
         if (!target)
             return;
 
-        float dist = Vector3.Distance(turret.transform.position, target.transform.position);
-        if (dist > range)
-        {
-            turret.TargetBehaviour.RemoveTarget(target);
-            return;
-        }
+        // float dist = Vector3.Distance(turret.transform.position, target.transform.position);
+        // if (dist > range)
+        // {
+        //     turret.TargetBehaviour.RemoveTarget(target);
+        //     return;
+        // }
         
         Vector3 dir = target.transform.position - turret.transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);

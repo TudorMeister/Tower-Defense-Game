@@ -17,7 +17,7 @@ public class MultipleEnemiesInRange : BaseTargetBehaviour
         Targets.Remove(Target);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
         // Check if the collider belongs to an enemy
         BaseEnemy enemy = other.GetComponent<BaseEnemy>();
@@ -28,7 +28,7 @@ public class MultipleEnemiesInRange : BaseTargetBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    public override void OnTriggerExit(Collider other)
     {
         // Check if the collider belongs to an enemy
         BaseEnemy enemy = other.GetComponent<BaseEnemy>();

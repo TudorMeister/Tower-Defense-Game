@@ -8,8 +8,8 @@ public class WallNode : MonoBehaviour {
     public Color hoverColor;
     public Vector3 heightOffset;
 
-    public Canvas canvas;
-    public bool toggleCanvas = true;
+   // public Canvas canvas;
+   // public bool toggleCanvas = true;
 
 
 
@@ -28,9 +28,9 @@ public class WallNode : MonoBehaviour {
         _rend = GetComponent<Renderer>();
         _startColor = _rend.material.color;
         _buildManager = BuildManager.instance;
-        canvas.enabled = false;
-        Debug.Log(canvas.enabled);
-        _shopScript = FindObjectOfType<ShopScript>();
+        //canvas.enabled = false;
+        //Debug.Log(canvas.enabled);
+       // _shopScript = FindObjectOfType<ShopScript>();
 
     }
 
