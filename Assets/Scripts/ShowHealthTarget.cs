@@ -6,12 +6,12 @@ using UnityEngine;
 public class ShowHealthTarget : MonoBehaviour
 {
     public Target parent;
-    public TextMeshPro text;
+    public TextMeshProUGUI text;
 
     void Start()
     {
-        parent = GetComponentInParent<Target>();
-        text = GetComponent<TextMeshPro>();
+        parent = FindObjectOfType<Target>();
+        text = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame

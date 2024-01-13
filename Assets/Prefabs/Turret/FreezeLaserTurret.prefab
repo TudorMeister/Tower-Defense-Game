@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
+  type: 2
   ShootBehaviour: {fileID: 5486231411693566600}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: 4159616123637167680}

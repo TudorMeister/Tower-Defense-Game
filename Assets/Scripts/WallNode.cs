@@ -12,7 +12,7 @@ public class WallNode : MonoBehaviour
     private Renderer _rend;
     private Color _startColor;
     private GameObject _lastSelectedTurret;
-    private bool _isOccupied = false;
+    public bool _isOccupied = false;
     private WallNode _lastSelectedNode;
     private BuildManager _buildManager;
     private Shop _shopScript;
