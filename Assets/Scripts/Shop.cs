@@ -15,7 +15,6 @@ public class Shop : MonoBehaviour
     public void SelectStandardTurret()
     {
         Debug.Log("Standard Turret Selected");
-        canvas.enabled = false;
         _buildManager.SetTurretToBuild(_buildManager.standardTurretPrefab);
         BuildLastSelectedTurret();
     }
@@ -23,7 +22,6 @@ public class Shop : MonoBehaviour
     public void SelectCanonBallTurret()
     {
         Debug.Log("CanonBall Turret Selected");
-        canvas.enabled = false;
         _buildManager.SetTurretToBuild(_buildManager.canonBallTurretPrefab);
         BuildLastSelectedTurret();
     }
@@ -31,7 +29,6 @@ public class Shop : MonoBehaviour
     public void SelectFreezeTurret()
     {
         Debug.Log("Freeze Turret Selected");
-        canvas.enabled = false;
         _buildManager.SetTurretToBuild(_buildManager.freezeTurretPrefab);
         BuildLastSelectedTurret();
     }
@@ -39,7 +36,6 @@ public class Shop : MonoBehaviour
     public void SelectMachineGunTurret()
     {
         Debug.Log("MachineGun Turret Selected");
-        canvas.enabled = false;
         _buildManager.SetTurretToBuild(_buildManager.machineGunTurretPrefab);
         BuildLastSelectedTurret();
     }
@@ -62,6 +58,7 @@ public class Shop : MonoBehaviour
                 _buildManager.money -= turretToBuild.cost;
                 if (turretToBuild != null)
                 {
+                    canvas.enabled = false;
                     Instantiate(turretToBuild, _lastSelectedNode.transform.position + turretToBuild.heightOffset, Quaternion.identity);
                     _lastSelectedNode.SetTurret();
                 }
