@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 467debb0768361b4381cdb64d4e360e8, type: 2}
+  - {fileID: 2100000, guid: 5ff30727ccfc8e242b2feec85e95e4ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -377,7 +377,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 25
+  cost: 10
+  upgradeCost: 15
+  heightOffset: {x: 0, y: 2, z: 0}
+  upgradeTurret: {fileID: 4471682875840843862, guid: e881c69c1b24dd545af2dc5e6bc2e952,
+    type: 3}
+  isUpgraded: 0
   ShootBehaviour: {fileID: -6431762038304272097}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: -3217022420922973496}

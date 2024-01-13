@@ -6,7 +6,6 @@ public class WallNode : MonoBehaviour
 {
     public Color hoverColor;
     public bool toggleCanvas = true;
-
     public Canvas canvas;
 
     private Renderer _rend;
@@ -25,14 +24,16 @@ public class WallNode : MonoBehaviour
         canvas = FindObjectOfType<Shop>().GetComponentInParent<Canvas>();
         canvas.enabled = false;
         _shopScript = FindObjectOfType<Shop>();
-        //Debug.Log(_shopScript);
     }
 
     void OnMouseDown()
     {
-        canvas.enabled = true;
+        if (!canvas.enabled)
+        {
+            canvas.enabled = true;
+        }
         _shopScript.SetLastSelectedNode(this);
-        GameObject turretToBuild = _buildManager.GetTurretToBuild();
+        BaseTurret turretToBuild = _buildManager.GetTurretToBuild();
     }
 
     public GameObject GetLastSelectedTurret()
@@ -48,14 +49,6 @@ public class WallNode : MonoBehaviour
     public void SetTurret()
     {
         _isOccupied = true;
-    }
-
-    void OnMouseUp()
-    {
-        if (!canvas.enabled)
-        {
-            canvas.enabled = true;
-        }
     }
 
     void OnMouseEnter()
