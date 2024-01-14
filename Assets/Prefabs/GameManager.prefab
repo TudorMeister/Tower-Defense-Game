@@ -47,7 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesList: []
+  turretList: []
   canvas: {fileID: 0}
+  win: {fileID: 0}
+  targetWaves: 20
+  waveSpawner: {fileID: 0}
+  enemyPrefab: {fileID: 532992301216728321, guid: 29235b5094f46014db4e83d892cdeef3,
+    type: 3}
+  canonBallTurretPrefab: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+    type: 3}
+  freezeTurretPrefab: {fileID: 9104812125791369257, guid: 6ea80318188aed04db9960887f454bd0,
+    type: 3}
+  machineGunTurretPrefab: {fileID: 9104812125791369257, guid: bc8617b43933ca64b9b49adeb0fc9065,
+    type: 3}
+  nodesList: []
 --- !u!114 &3726098294176081713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,11 +93,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoney: 50
   money: 0
-  cannoballTurret: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+  standardTurretPrefab: {fileID: 9104812125791369257, guid: 8f68f78dd8274804bbed16fb2dc18e56,
     type: 3}
-  freezeTurret: {fileID: 9104812125791369257, guid: 6ea80318188aed04db9960887f454bd0,
+  canonBallTurretPrefab: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
     type: 3}
-  machineGunTurret: {fileID: 9104812125791369257, guid: bc8617b43933ca64b9b49adeb0fc9065,
+  freezeTurretPrefab: {fileID: 9104812125791369257, guid: 6ea80318188aed04db9960887f454bd0,
     type: 3}
-  standardTurretPrefab: {fileID: 9104812125791369257, guid: 333b49f007ca9724dac33732ef96ecfe,
+  machineGunTurretPrefab: {fileID: 9104812125791369257, guid: bc8617b43933ca64b9b49adeb0fc9065,
     type: 3}

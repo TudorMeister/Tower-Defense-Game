@@ -23,6 +23,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("CanonBall Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.canonBallTurretPrefab);
+        heightOffset = new Vector3(0, 0, 0);
         BuildLastSelectedTurret();
     }
 
@@ -37,6 +38,7 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("MachineGun Turret Selected");
         _buildManager.SetTurretToBuild(_buildManager.machineGunTurretPrefab);
+        heightOffset = new Vector3(0, 0, 0);
         BuildLastSelectedTurret();
     }
 

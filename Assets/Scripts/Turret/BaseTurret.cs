@@ -12,6 +12,10 @@ public class BaseTurret : MonoBehaviour
 
     public bool isUpgraded = false;
 
+    [SerializeField]
+    public int type;
+
+
     public BaseShootBehaviour ShootBehaviour;
 
     public BaseMovementBehaviour MovementBehaviour;
@@ -22,6 +26,7 @@ public class BaseTurret : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.turretList.Add(gameObject);
         _buildManager = BuildManager.instance;
         if (upgradeTurret)
             upgradeTurret.isUpgraded = true;

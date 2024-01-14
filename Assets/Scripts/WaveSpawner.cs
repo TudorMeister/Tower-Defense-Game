@@ -165,4 +165,17 @@ public class WaveSpawner : MonoBehaviour
 
         spawnPoint.SetHologramContent(stringBuilder.ToString());
     }
+
+    public int GetWave()
+    {
+        return waveIndex;
+    }
+
+
+    public void SetWave(int wave)
+    {
+        waveIndex = wave;
+    }
+
+
 }
