@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class LevelSelector : MonoBehaviour
 {
     public void Akriel () {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LevelFinal_1");
+    }
+    public void Ezra () {
+        SceneManager.LoadScene("LevelFinal_2");
     }
 }
