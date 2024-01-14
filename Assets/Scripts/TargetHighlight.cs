@@ -12,23 +12,10 @@ public class TargetHighlight : MonoBehaviour
     {
         _rend = GetComponent<Renderer>();
         //_startColor = _rend.material.color;
-    }
-
-    void OnMouseEnter()
-    {
         _rend.material.color = hoverColor;
         foreach (Material material in _rend.materials)
         {
             material.color = hoverColor;
-        }
-    }
-
-    void OnMouseExit()
-    {
-        //_rend.material.color = _startColor;
-        foreach (Material material in _rend.materials)
-        {
-            material.color = Color.white;
         }
     }
 }

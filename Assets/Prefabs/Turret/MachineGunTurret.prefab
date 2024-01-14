@@ -2624,6 +2624,7 @@ GameObject:
   - component: {fileID: 4824279644306895089}
   - component: {fileID: -6431762038304272097}
   - component: {fileID: -3217022420922973496}
+  - component: {fileID: -1641653910126095911}
   m_Layer: 0
   m_Name: MachineGunTurret
   m_TagString: Untagged
@@ -2640,7 +2641,7 @@ Transform:
   m_GameObject: {fileID: 9104812125791369257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2740,8 +2741,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.48, y: 2.26, z: 1.69}
+  m_Center: {x: 0, y: 1.09, z: 0}
 --- !u!114 &4471682875840843862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2754,13 +2755,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
   cost: 30
   upgradeCost: 35
-  heightOffset: {x: 0, y: 5.5, z: 0}
+  heightOffset: {x: 0, y: 0, z: 0}
   upgradeTurret: {fileID: 4471682875840843862, guid: d0441dd948a34644b89393145d504428,
     type: 3}
   isUpgraded: 0
+  type: 3
   ShootBehaviour: {fileID: -6431762038304272097}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: -3217022420922973496}
@@ -2798,12 +2799,8 @@ MonoBehaviour:
   Turret: {fileID: 4471682875840843862}
   FirePoints:
   - {fileID: 4465808108686809933}
-  - {fileID: 253745618054518566}
-  - {fileID: 6736827149703260170}
-  - {fileID: 90093123516508168}
-  - {fileID: 2117032515196102225}
-  - {fileID: 3118641123515367605}
-  ShootCooldownInSeconds: 0.5
+  ShootCooldownInSeconds: 0.1
+  audio: {fileID: 0}
 --- !u!114 &-3217022420922973496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,6 +2815,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret: {fileID: 4471682875840843862}
   TargetingRange: 120
+--- !u!82 &-1641653910126095911
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104812125791369257}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c596787acbe65d14f941dda39171ec4a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 200
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2775532975976579686
 PrefabInstance:
   m_ObjectHideFlags: 0

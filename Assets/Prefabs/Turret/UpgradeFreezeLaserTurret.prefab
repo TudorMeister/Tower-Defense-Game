@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 9104812125791369257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 10, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -485,10 +485,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 5
   upgradeCost: 10
-  heightOffset: {x: 0, y: 5.5, z: 0}
+  heightOffset: {x: 0, y: 5, z: 0}
   upgradeTurret: {fileID: 4471682875840843862, guid: 74b13d9a6cfb1b346a84eb88c8cf6148,
     type: 3}
-  isUpgraded: 0
+  isUpgraded: 1
+  type: 5
   ShootBehaviour: {fileID: 5486231411693566600}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: 4159616123637167680}

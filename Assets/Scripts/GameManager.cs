@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using System.IO;
@@ -15,6 +14,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> turretList = new List<GameObject>();
     public GameObject canvas;
     public GameObject win;
+    public GameObject lose;
     public int targetWaves;
     public WaveSpawner waveSpawner;
     private bool reload = false;
@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject canonBallTurretPrefab;
     public GameObject freezeTurretPrefab;
     public GameObject machineGunTurretPrefab;
+    public GameObject canonBallTurretPrefabUpgraded;
+    public GameObject freezeTurretPrefabUpgraded;
+    public GameObject machineGunTurretPrefabUpgraded;
     public List<WallNode> nodesList = new List<WallNode>();
 
 
@@ -60,12 +63,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (waveSpawner.GetWave() > targetWaves && !reload)
+        if (waveSpawner.GetWave() > targetWaves && !reload && !(lose.active == true))
         {
             win.SetActive(true);
             reload = true;
             string currentSceneName = SceneManager.GetActiveScene().name;
-            Invoke("ReloadScene", 5.0f);
+            Invoke("LoadNextLevel", 5.0f);
         }
 
         if (Input.GetKeyDown(KeyCode.J))
@@ -92,6 +95,18 @@ public class GameManager : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+
+    public void LoadNextLevel()
+    {
+        if (SceneManager.GetActiveScene().name == "LevelFinal_1") {
+            SceneManager.LoadScene("LevelFinal_2");
+        } else
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+    }
+
 
     public int GetWave()
     {
@@ -134,14 +149,14 @@ public class GameManager : MonoBehaviour
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
-            Time.timeScale = 0.0f;
+            //Time.timeScale = 0.0f;
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
             Debug.Log("Loaded: " + saveString);
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
             if (saveObject.levelName != SceneManager.GetActiveScene().name)
             {
-                Time.timeScale = 1.0f;
+                //Time.timeScale = 1.0f;
                 Debug.Log("Not a save from this level");
                 return;
             }
@@ -190,6 +205,18 @@ public class GameManager : MonoBehaviour
                 {
                     Instantiate(machineGunTurretPrefab, pos, Quaternion.identity);
                 }
+                if (saveObject.turretType[aux] == 4)
+                {
+                    Instantiate(canonBallTurretPrefabUpgraded, pos, Quaternion.identity);
+                }
+                if (saveObject.turretType[aux] == 5)
+                {
+                    Instantiate(freezeTurretPrefabUpgraded, pos, Quaternion.identity);
+                }
+                if (saveObject.turretType[aux] == 6)
+                {
+                    Instantiate(machineGunTurretPrefabUpgraded, pos, Quaternion.identity);
+                }
                 WallNode closestNode = null;
                 float minDistance = 999999f;
                 foreach (WallNode node in nodesList)
@@ -209,7 +236,7 @@ public class GameManager : MonoBehaviour
 
 
 
-            Time.timeScale = 1.0f;
+            //Time.timeScale = 1.0f;
         }
         else
         {

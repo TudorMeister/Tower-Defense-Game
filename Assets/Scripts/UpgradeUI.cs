@@ -22,16 +22,19 @@ public class UpgradeUI : MonoBehaviour
             _buildManager.uiCanvas.enabled = !_buildManager.uiCanvas.enabled;
             transform.position = _target.transform.position;
         }
+        Debug.Log(target.isUpgraded);
     }
 
     public void UpgradeTurret()
     {
         if (_target)
         {
+            Debug.Log("Am ajuns la upgrade!!!");
             _buildManager.money -= _target.upgradeCost;
             BaseTurret _targetCopy = _target;
+            GameManager.Instance.turretList.Remove(_target.gameObject);
             Destroy(_target.gameObject);
-            Instantiate(_targetCopy.upgradeTurret, _targetCopy.transform.position, Quaternion.identity);
+            Instantiate(_targetCopy.upgradeTurret, _targetCopy.transform.position + _targetCopy.upgradeTurret.heightOffset, Quaternion.identity);
             _buildManager.uiCanvas.enabled = false;
         }
     }

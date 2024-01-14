@@ -8,7 +8,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public SpawnPoint[] SpawnPoints;
-    public float timeBetweenWaves = 5f;
+    public float timeBetweenWaves = 10f;
     private float countdown = 2f;
     private int countdownToDisplay = 3;
     private int waveIndex = 1;
@@ -74,7 +74,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < NumberOfEnemies; i++) 
         {
             SpawnEnemy(SpawnPoint);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.6f);
         }
     }
 

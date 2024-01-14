@@ -16,6 +16,10 @@ public class Enemy : BaseEnemy
 
     private AIPath _aiPath;
 
+    public GameObject deathEffect;
+
+
+
     private void Awake()
     {
         GameManager.Instance.enemiesList.Add(this);
@@ -50,6 +54,8 @@ public class Enemy : BaseEnemy
 
     private void OnDestroy()
     {
+        if (!this.gameObject.scene.isLoaded) return;
+        Instantiate(deathEffect, transform.position, transform.rotation);
         GameManager.Instance.enemiesList.Remove(this);
     }
 

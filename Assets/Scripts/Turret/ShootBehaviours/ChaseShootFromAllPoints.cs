@@ -18,6 +18,16 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
 
     private float timeUntilNextShot = 0f;
 
+    public AudioSource audio;
+
+    private void Start()
+    {
+       // audio = GetComponent<AudioSource>();
+    }
+
+
+
+
     void Update(){
         if (timeUntilNextShot > 0)
             timeUntilNextShot -= Time.deltaTime;
@@ -25,6 +35,9 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
         if (CanShoot())
             Shoot();
     }
+
+
+
 
     public override bool CanShoot()
     {
@@ -54,6 +67,10 @@ public class ChaseShootFromAllPoints : BaseShootBehaviour
 
     public override void Shoot()
     {
+        //if (!audio.isPlaying)
+        //{
+        //    audio.Play();
+        //}
         timeUntilNextShot = ShootCooldownInSeconds;
         
         foreach (Transform firePoint in FirePoints)

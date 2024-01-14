@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 9104812125791369257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -470,8 +470,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.39, y: 2.34, z: 2.12}
+  m_Center: {x: 0, y: 0.86, z: 0.33}
 --- !u!114 &4471682875840843862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,13 +484,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c6348c5769b1848b0be591edaafe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
   cost: 15
   upgradeCost: 20
-  heightOffset: {x: 0, y: 5.5, z: 0}
+  heightOffset: {x: 0, y: 0, z: 0}
   upgradeTurret: {fileID: 4471682875840843862, guid: 8f081aba86529604e901c74614933f40,
     type: 3}
   isUpgraded: 0
+  type: 2
   ShootBehaviour: {fileID: 5486231411693566600}
   MovementBehaviour: {fileID: 4824279644306895089}
   TargetBehaviour: {fileID: 4159616123637167680}
@@ -565,17 +565,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3dd7c42127dd62a48b4fffefa7da514b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3dd7c42127dd62a48b4fffefa7da514b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3dd7c42127dd62a48b4fffefa7da514b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3dd7c42127dd62a48b4fffefa7da514b,
         type: 3}

@@ -7,6 +7,8 @@ public class Target : MonoBehaviour
 {
     public int health = 100;
 
+    public GameObject lose;
+
 
     public void takeDamage(int damage)
     {
@@ -18,8 +20,15 @@ public class Target : MonoBehaviour
     {
         if (health <= 0) 
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            lose.SetActive(true);
+            Invoke("ReloadScene", 5.0f);
         }
+    }
+
+
+    public void ReloadScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
