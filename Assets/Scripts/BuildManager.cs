@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-
     public static BuildManager instance;
 
     public int startingMoney = 50;
     public int money = 0;
+
+    public UpgradeUI upgradeUI;
+
+    public Canvas uiCanvas;
+
+    public BaseTurret standardTurretPrefab;
+    public BaseTurret canonBallTurretPrefab;
+    public BaseTurret freezeTurretPrefab;
+    public BaseTurret machineGunTurretPrefab;
 
     void Awake()
     {
@@ -18,22 +26,18 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
+
         money = startingMoney;
     }
 
-    public GameObject standardTurretPrefab;
-    public GameObject canonBallTurretPrefab;
-    public GameObject freezeTurretPrefab;
-    public GameObject machineGunTurretPrefab;
+    private BaseTurret turretToBuild;
 
-    private GameObject turretToBuild;
-
-    public GameObject GetTurretToBuild()
+    public BaseTurret GetTurretToBuild()
     {
         return turretToBuild;
     }
 
-    public void SetTurretToBuild(GameObject turret)
+    public void SetTurretToBuild(BaseTurret turret)
     {
         turretToBuild = turret;
     }
