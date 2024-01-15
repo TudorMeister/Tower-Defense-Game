@@ -7,7 +7,8 @@ public class Enemy : BaseEnemy
     [SerializeField]
     public override int Health { get; set; } = 10;
 
-    public override int DamageToInflict {get; set;} = 1;
+    [SerializeField]
+    public override int DamageToInflict {get; set;} = 2;
 
     [SerializeField]
     private int _range = 20;

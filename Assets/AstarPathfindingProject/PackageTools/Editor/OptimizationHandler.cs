@@ -30,6 +30,8 @@ namespace Pathfinding {
 			(BuildTargetGroup)5, /* PS3 */
 			(BuildTargetGroup)6, /* XBox360 */
 			(BuildTargetGroup)15, /* WP8 */
+			(BuildTargetGroup)26,
+			(BuildTargetGroup)28,
 #endif
 #if UNITY_2017_4_OR_NEWER
 			(BuildTargetGroup)2, /* WebPlayer */
